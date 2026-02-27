@@ -1,0 +1,149 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 57px;
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.brandText {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #0a0a0a;
+}
+
+.navLinks {
+    display: flex;
+    gap: 2px;
+}
+
+.navLink {
+    padding: 6px 14px;
+    border-radius: 6px;
+    color: #a3a3a3;
+    text-decoration: none;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    transition: 120ms ease;
+}
+
+.navLink:hover {
+    color: #0a0a0a;
+    background: #f5f5f5;
+}
+
+.navLink.active {
+    color: #0a0a0a;
+    background: #f5f5f5;
+}
+
+.navWallet {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.networkBadge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    border-radius: 100px;
+    border: 1px solid #e5e5e5;
+    font-size: 0.6875rem;
+    color: #a3a3a3;
+    font-weight: 500;
+}
+
+.networkDot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #d4d4d4;
+}
+
+.networkDot.connected {
+    background: #16a34a;
+}
+
+.btnConnect {
+    padding: 6px 16px;
+    border-radius: 6px;
+    background: #0a0a0a;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: 120ms ease;
+}
+
+.btnConnect:hover {
+    background: #262626;
+}
+
+.btnConnect:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btnWallet {
+    padding: 6px 16px;
+    border-radius: 6px;
+    background: #fff;
+    color: #0a0a0a;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid #e5e5e5;
+    cursor: pointer;
+    transition: 120ms ease;
+}
+
+.btnWallet:hover {
+    border-color: #dc2626;
+    color: #dc2626;
+}
+
+.btnWallet:hover .walletAddress {
+    display: none;
+}
+
+.btnWallet .disconnectLabel {
+    display: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.btnWallet:hover .disconnectLabel {
+    display: inline;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 1rem;
+    }
+
+    .navLinks {
+        display: none;
+    }
+
+    .networkBadge {
+        display: none;
+    }
+}

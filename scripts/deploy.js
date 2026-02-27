@@ -1,10 +1,4 @@
-import hre from "hardhat";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const hre = require("hardhat");
 
 async function main() {
     const [deployer] = await hre.ethers.getSigners();
@@ -49,7 +43,7 @@ async function main() {
     for (let i = 1; i <= Math.min(5, signers.length - 1); i++) {
         const tx = await voteToken.registerVoter(
             signers[i].address,
-            hre.ethers.parseEther("10") // 10 tokens each
+            hre.ethers.parseEther("10")
         );
         await tx.wait();
         console.log(`  ✅ Registered voter ${i}: ${signers[i].address} (10 VOTE tokens)`);
@@ -60,8 +54,8 @@ async function main() {
     const createTx = await votingSystem.createElection(
         "Best Blockchain Platform 2026",
         "Vote for the blockchain platform that has contributed the most to Web3 this year.",
-        now + 5, // starts in 5 seconds
-        now + 86400 // ends in 24 hours
+        now + 5,
+        now + 86400
     );
     await createTx.wait();
     console.log("  ✅ Demo election created: 'Best Blockchain Platform 2026'");
@@ -108,6 +102,9 @@ async function main() {
         chainId: 31337,
         deployer: deployer.address,
     };
+
+    const fs = require("fs");
+    const path = require("path");
 
     const frontendDir = path.join(__dirname, "..", "frontend");
     if (!fs.existsSync(frontendDir)) {

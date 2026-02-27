@@ -1,5 +1,10 @@
 const { expect } = require("chai");
-const { ethers } = require("hardhat");
+const { ethers, network } = require("hardhat");
+
+async function getBlockTimestamp() {
+    const block = await ethers.provider.getBlock("latest");
+    return block.timestamp;
+}
 
 describe("BlockVote — Token-Based Voting System", function () {
     let voteToken, votingSystem;
@@ -64,7 +69,7 @@ describe("BlockVote — Token-Based Voting System", function () {
         let electionId;
 
         beforeEach(async function () {
-            const now = Math.floor(Date.now() / 1000);
+            const now = await getBlockTimestamp();
             const tx = await votingSystem.createElection(
                 "Test Election",
                 "A test election",
@@ -96,7 +101,7 @@ describe("BlockVote — Token-Based Voting System", function () {
         });
 
         it("Should require at least 2 candidates to start", async function () {
-            const now = Math.floor(Date.now() / 1000);
+            const now = await getBlockTimestamp();
             await votingSystem.createElection("Solo Election", "Only 1 candidate", now + 10, now + 86400);
             await votingSystem.addCandidate(2, "Solo", "Only candidate");
             await expect(votingSystem.startElection(2)).to.be.revertedWith("Need at least 2 candidates");
@@ -107,7 +112,7 @@ describe("BlockVote — Token-Based Voting System", function () {
         let electionId;
 
         beforeEach(async function () {
-            const now = Math.floor(Date.now() / 1000);
+            const now = await getBlockTimestamp();
             await votingSystem.createElection("Token Vote Test", "Testing token voting", now + 10, now + 86400);
             electionId = 1;
             await votingSystem.addCandidate(electionId, "Alice", "Candidate Alice");
