@@ -1,3 +1,35 @@
-node_modules
+# Dependencies
+node_modules/
 
-node_modules
+# Hardhat
+cache/
+artifacts/
+
+# Next.js
+frontend/.next/
+frontend/out/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Coverage & testing
+coverage/
+coverage.json
+
+# TypeChain (if used)
+typechain/
+typechain-types/
+
+# Misc
+*.log
+npm-debug.log*
