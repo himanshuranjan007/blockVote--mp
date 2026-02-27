@@ -1,4 +1,10 @@
-const hre = require("hardhat");
+import hre from "hardhat";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 async function main() {
     const [deployer] = await hre.ethers.getSigners();
@@ -102,9 +108,6 @@ async function main() {
         chainId: 31337,
         deployer: deployer.address,
     };
-
-    const fs = require("fs");
-    const path = require("path");
 
     const frontendDir = path.join(__dirname, "..", "frontend");
     if (!fs.existsSync(frontendDir)) {
